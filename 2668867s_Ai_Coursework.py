@@ -135,9 +135,9 @@ def task2_render():
 
 
 if __name__ == "__main__":
-    # generator = MazeGenerator()
-    # maze, teleports = generator.gen_maze(7, 2)
-    # steps, path, steps_map = bfs(maze, teleports)
-    # task1_render(maze, path, steps, teleports, steps_map)
+    generator = MazeGenerator()
+    maze, teleports = generator.gen_maze(7, 2)
+    steps, path, steps_map = bfs(maze, teleports)
+    task1_render(maze, path, steps, teleports, steps_map)
 
     task2_render()
