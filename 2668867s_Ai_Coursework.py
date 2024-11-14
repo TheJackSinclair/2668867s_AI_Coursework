@@ -81,7 +81,7 @@ def bfs(maze, wormholes):
     return -1, [], steps_map
 
 
-def render_final_result(m, path, step_count, wormholes, steps_map):
+def task1_render(m, path, step_count, wormholes, steps_map):
     fig, ax = plt.subplots()
     grid = np.array(m.grid, dtype=float)
 
@@ -114,8 +114,30 @@ def render_final_result(m, path, step_count, wormholes, steps_map):
     plt.show()
 
 
+def task2_render():
+    sizes = [10, 15, 20, 25, 30]
+    steps_to_goal = []
+
+    for n in sizes:
+        generator = MazeGenerator()
+        maze, wormholes = generator.gen_maze(n, 2)
+        steps, _, _ = bfs(maze, wormholes)  # We only need the step count here
+        steps_to_goal.append(steps)
+        print(f"Size: {n}x{n}, Steps to Goal: {steps}")
+
+    plt.plot(sizes, steps_to_goal, marker='o', linestyle='-')
+    plt.xlabel("Maze Size (n x n)")
+    plt.ylabel("Steps to Goal")
+    plt.title("Effect of Maze Size on Steps to Goal")
+    plt.grid(True)
+    plt.show()
+
+
+
 if __name__ == "__main__":
-    generator = MazeGenerator()
-    maze, teleports = generator.gen_maze(10, 0)
-    steps, path, steps_map = bfs(maze, teleports)
-    render_final_result(maze, path, steps, teleports, steps_map)
+    # generator = MazeGenerator()
+    # maze, teleports = generator.gen_maze(7, 2)
+    # steps, path, steps_map = bfs(maze, teleports)
+    # task1_render(maze, path, steps, teleports, steps_map)
+
+    task2_render()
