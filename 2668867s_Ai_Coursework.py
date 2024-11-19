@@ -133,6 +133,27 @@ def task2_render():
     plt.show()
 
 
+def task3_render():
+    n = 30
+    teleportation_links = list(range(0, 11))
+    steps_to_goal = []
+
+    for t in teleportation_links:
+        generator = MazeGenerator()
+        maze, wormholes = generator.gen_maze(n, t)
+        steps, _, _ = bfs(maze, wormholes)
+        steps_to_goal.append(steps)
+        print(f"Teleportation Links: {t}, Steps to Goal: {steps}")
+
+    # Plotting the results
+    plt.plot(teleportation_links, steps_to_goal, marker='o', linestyle='-')
+    plt.xlabel("Number of Teleportation Links (t)")
+    plt.ylabel("Steps to Goal (s)")
+    plt.title("Effect of Number of Teleportation Links on Steps to Goal")
+    plt.grid(True)
+    plt.show()
+
+
 
 if __name__ == "__main__":
     generator = MazeGenerator()
@@ -141,3 +162,5 @@ if __name__ == "__main__":
     task1_render(maze, path, steps, teleports, steps_map)
 
     task2_render()
+
+    task3_render()
