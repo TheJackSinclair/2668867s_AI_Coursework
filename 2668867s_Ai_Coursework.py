@@ -42,7 +42,6 @@ def bfs(maze, wormholes):
     path = {start: None}
     steps_map = {start: 0}
     wormholes_map = {source: destination for source, destination in wormholes}
-    wormholes_map.update({destination: source for source, destination in wormholes})
 
     """While were still searching """
     while queue:
